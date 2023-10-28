@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SitecoreCM", "SitecoreCM", "{4A28981F-021C-47F1-9497-66444EB114B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GVI.ContentHub.Sync.WebJob", "GVI.ContentHub.Sync.WebJob\GVI.ContentHub.Sync.WebJob.csproj", "{F0C67EDF-8A7C-4C79-84B6-EF0693654424}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{A32CB375-699B-4B6E-BB2C-4FFEBDE70879}"
+	ProjectSection(SolutionItems) = preProject
+		SitecoreCM\CH-DeleteCMPContent.ps1 = SitecoreCM\CH-DeleteCMPContent.ps1
+		CH-DeleteCMPImportFiles.ps1 = CH-DeleteCMPImportFiles.ps1
+		SitecoreCM\CH-ImportFileRun.ps1 = SitecoreCM\CH-ImportFileRun.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{9FE44F85-390F-42D8-90D8-81E9C56CB4C5}"
+	ProjectSection(SolutionItems) = preProject
+		SitecoreCM\CH-ImportFileBatch.ps1 = SitecoreCM\CH-ImportFileBatch.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sitecore Packages CM", "Sitecore Packages CM", "{944EA965-C555-4B4F-9ADA-609C6E903014}"
+	ProjectSection(SolutionItems) = preProject
+		SitecoreCM\CH Sync Package 1.zip = SitecoreCM\CH Sync Package 1.zip
+		SitecoreCM\CH Sync Package 2.zip = SitecoreCM\CH Sync Package 2.zip
+		SitecoreCM\CMP Batch Import Sitecore Package v1.zip = SitecoreCM\CMP Batch Import Sitecore Package v1.zip
+		SitecoreCM\CMP Batch Import Sitecore Package-1.1.zip = SitecoreCM\CMP Batch Import Sitecore Package-1.1.zip
+		SitecoreCM\CMP Folder.zip = SitecoreCM\CMP Folder.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureWebJob", "AzureWebJob", "{F0FD5274-F649-49CF-891E-3AC68A805558}"
+	ProjectSection(SolutionItems) = preProject
+		SitecoreCM\CHDownloader.prod.zip = SitecoreCM\CHDownloader.prod.zip
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Debug|x64.Build.0 = Debug|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Debug|x86.Build.0 = Debug|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Release|x64.ActiveCfg = Release|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Release|x64.Build.0 = Release|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Release|x86.ActiveCfg = Release|Any CPU
+		{F0C67EDF-8A7C-4C79-84B6-EF0693654424}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A32CB375-699B-4B6E-BB2C-4FFEBDE70879} = {4A28981F-021C-47F1-9497-66444EB114B9}
+		{9FE44F85-390F-42D8-90D8-81E9C56CB4C5} = {4A28981F-021C-47F1-9497-66444EB114B9}
+		{944EA965-C555-4B4F-9ADA-609C6E903014} = {4A28981F-021C-47F1-9497-66444EB114B9}
+		{F0FD5274-F649-49CF-891E-3AC68A805558} = {4A28981F-021C-47F1-9497-66444EB114B9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FF89364-4528-4AD1-906C-B57BED3FA052}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal
