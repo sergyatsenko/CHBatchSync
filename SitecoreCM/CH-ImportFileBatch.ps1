@@ -4,14 +4,16 @@ Import-Function -Name CH-ImportFileRun
 $startTimestamp = Get-Date
 Write-Output "Started run at", $startTimestamp.ToString()
 $configItems = New-Object 'System.Collections.Generic.Dictionary[[string],[string]]'
-
+# CMP Mapping configuration. Refer to Sitecore documentation for more details: https://doc.sitecore.com/xp/en/developers/connect-for-ch/51/connect-for-content-hub/cmp-items-in-the-content-editor.html
 $mappingConfigRoot = Get-Item -Path "master:/sitecore/system/Modules/CMP/Config"
+# Read mapped entity names from the mapping configuration 
 Get-ChildItem -Path "master:/sitecore/system/Modules/CMP/Config" -Recurse | Where-Object { $_.TemplateName -eq "Entity Mapping" } | ForEach-Object {
     $entityDefinition = $_["EntityTypeSchema"]
     $configItems.Add( $_.Name , $entityDefinition)
 }
-
+# Incoming folder is where all new/unprocessed JSON files are. The download process places new files here
 $incomingFolderPath = [Sitecore.MainUtil]::MapPath("/App_Data/ContentHubData/Incoming") 
+# Processed folder is where data files are moves to after processing
 $processedFolderPath = [Sitecore.MainUtil]::MapPath("/App_Data/ContentHubData/Processed") 
 
 $totalFileCounter = 0
@@ -31,11 +33,13 @@ if ($utcTime.Hour -ge 1 -and $utcTime.Hour -lt 4) {
             $message = "CMP: Started processing run: {0}. Started at {1}" -f $key, $runStart
             Write-Output message
             Write-Log $message -Log Info
-            
+
+            # Lookup all files, containing the entity name in the filename
             $configItemsPath = "master:/sitecore/system/Modules/CMP/Config/{0}" -f $key
             $filePattern = "{0}_*" -f $configItems[$key]
-        
             $files = Get-ChildItem -Path $incomingFolderPath -Filter $filePattern | Sort-Object -Property Name
+
+            # process all found files
             foreach ($file in $files) {
                 $fileRunStart = Get-Date
                 $incomingFilePath = "{0}\{1}" -f $incomingFolderPath, $file
