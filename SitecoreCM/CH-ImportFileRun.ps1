@@ -1,14 +1,14 @@
 function CH-ImportFileRun ([string]$mappingConfigItemPath, [string]$jsonFilePath, [bool]$skipExisting) {
-     
      try {
-
         $startTimestamp = Get-Date
         $message = "CMP: Started importing file content from {0}. Started at: {1}. Config item: {2}. Skip existing items: {3}" -f $jsonFilePath, $startTimestamp, $mappingConfigItemPath, $skipExisting 
         Write-Output $message
         Write-Log $message -Log Info
         
         #########################################################################################################################
-        class MappedField {
+        # Read mapping configuration from CMP configuration item.
+	# Refer to Sitecore documentation for more details on CMP mappings: https://doc.sitecore.com/xp/en/developers/connect-for-ch/51/connect-for-content-hub/cmp-items-in-the-content-editor.html
+	class MappedField {
             [string] $SourceFieldName
             [string[]] $DestinationFieldNames
             [string] $Type
@@ -41,7 +41,7 @@ function CH-ImportFileRun ([string]$mappingConfigItemPath, [string]$jsonFilePath
         ####################################################################################################################################
         $mappingConfigItem = Get-Item -Path $mappingConfigItemPath
         
-        # Read the fields from the item
+        # Read mapped fields from CMP config item
         $entityTypeSchema = $mappingConfigItem["EntityTypeSchema"]
         $bucket = $mappingConfigItem["Bucket"]
         $template = $mappingConfigItem["Template"]
@@ -119,7 +119,8 @@ function CH-ImportFileRun ([string]$mappingConfigItemPath, [string]$jsonFilePath
         
         $jsonData = ConvertFrom-Json -InputObject $jsonContent   
         $bucketFolderItem = Get-Item -Path "master:" -ID $bucket
-        
+
+	# use bulk update context to improve sync performance by disabling a number of Sitecore events  
         New-UsingBlock (New-Object Sitecore.Data.BulkUpdateContext) {
             foreach ($object in $jsonData) {
                 try {
